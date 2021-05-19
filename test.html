@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <script></script>
+      <h1>Задание 1</h1>
+      <input
+        placeholder="x"
+        type="number"
+        id="goal1X"
+        name=""
+        onchange='let val1=5*this.value-1/Math.tan(this.value);let val2=Math.pow(Math.E, this.value-2)-11; document.getElementById("goal1Bool").innerText=(val1)>(val2);document.getElementById("goal1Val1").innerText=val1;document.getElementById("goal1Val2").innerText=val2'
+      /><span id="goal1Val1"></span>><span id="goal1Val2"></span
+      ><span id="goal1Bool">test</span>
+      <h1>Задание 2</h1>
+      <input
+        type="number"
+        name=""
+        onchange="let fact=function(num) {if(num <= 0){return 1;}else{return(num*fact(num-1));}};document.getElementById('goal2Fact').innerText=fact(this.value);
+"
+      /><span id="goal2Fact">test</span>
+      <h1>Задание 3</h1>
+      <script type="text/javascript">
+        var res = function (a, b) {
+          if (!b) {
+            return (document.getElementById("goal3res").innerText = a);
+          }
+          return res(b, a % b);
+        };
+      </script>
+      <input
+        type="number"
+        min="0"
+        value="0"
+        id="goal3Val1"
+        name=""
+        onchange="res(this.value, document.getElementById('goal3Val2').value)"
+      /><input
+        type="number"
+        min="0"
+        value="0"
+        id="goal3Val2"
+        name=""
+        onchange="res(this.value, getElementById('goal3Val1').value)"
+      />RESULT:<span id="goal3res"></span>
+      <h1>Задание 4</h1>
+      <table>
+        <tr>
+          <td><table id="tableBase"></table></td>
+          <td>=></td>
+          <td><table id="tableRes"></table></td>
+        </tr>
+      </table>
+      <script type="text/javascript">
+        let table = document.querySelector("#tableBase");
+        let tableRes = document.querySelector("#tableRes");
+        let arr = [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9],
+        ];
+        newArr(tableRes, arr);
+        function newArr(tableRes, arr) {
+          console.log(tableRes);
+          for (let i = 0; i < arr.length; i++) {
+            let tr = document.createElement("tr");
+            for (let j = 0; j < arr[i].length; j++) {
+              let td = document.createElement("td");
+              td.innerHTML = arr[i][j];
+              tr.appendChild(td);
+            }
+            tableRes.appendChild(tr);
+          }
+        }
+        fillTable(table, arr);
+        function fillTable(table, arr) {
+          for (let i = 0; i < arr.length; i++) {
+            let tr = document.createElement("tr");
+            for (let j = 0; j < arr[i].length; j++) {
+              let td = document.createElement("td");
+              td.innerHTML = arr[j][i];
+              tr.appendChild(td);
+            }
+            table.appendChild(tr);
+          }
+        }
+      </script>
+      <h1>Задание 5</h1>
+      <input
+        type="text"
+        id="in"
+        oninput="this.value=this.value.replace(/[^a-zA-Zа-яА-Я\s]/g,'');document.getElementById('goal5Res').innerText = this.value.split(' ').reverse().join(' ');"
+      /><span id="goal5Res">test</span>
+      <h1>Задание 6</h1>
+      <input
+        type="number"
+        min="0"
+        name=""
+        onchange="let goal6Arr=[],goal6Val=1;
+		for(i=0; i<this.value;i++){
+			let arrTest = []
+			for(j=0;j<this.value;j++){
+				arrTest.push(goal6Val++)
+			}
+			goal6Arr.push(arrTest)
+			
+		};console.log(goal6Arr);document.getElementById('goal6ArrSpan').innerHTML = goal6Arr;
+		let lowest = goal6Arr[0][0],heighst = lowest;
+		for(i=0;i<goal6Arr.length;i++){
+			for(j=0;j<goal6Arr[i].length;j++){
+			if(lowest>goal6Arr[i][j]){lowest = goal6Arr[i][j]}
+				if(heighst<goal6Arr[i][j]){heighst = goal6Arr[i][j]}
+
+		}
+	}document.getElementById('lowest').innerText = lowest;document.getElementById('heighst').innerText = heighst;let goal6Res = lowest/heighst;document.getElementById('goal6Res').innerText = goal6Res;"
+      />[<span id="goal6ArrSpan"></span>] =>Lowest:<span id="lowest"></span
+      >Heighst:<span id="heighst"></span>;Result=<span id="goal6Res"></span>
+      <h1>Задание 7a</h1>
+      <script type="text/javascript"></script>
+      <input placeholder="A" id="strA" type="text" name="" /><input
+        placeholder="B"
+        id="strB"
+        type="text"
+        name=""
+      /><input
+        placeholder="sampleTxt"
+        type="text"
+        onchange="let goal7a=this.value;while(goal7a.split(document.getElementById('strA').value).length != 1){goal7a = goal7a.split(document.getElementById('strA').value).join(document.getElementById('strB').value); document.getElementById('goal7b').innerText = goal7a}"
+        name=""
+      /><span id="goal7b"></span>
+    </div>
+    <hr>
+    <h1>Ответы на теорию</h1>
+    <span><b>1)</b>Сколько различных значений может принимать переменная, занимающая в
+памяти один байт?</span><p> Ответ: 2^8 (256)</p><br>
+<span><b>2)</b>Для любого ли рекурсивного алгоритма можно предложить аналогичный
+нерекурсивный (итерационный) алгоритм? Обоснуйте ваш ответ.</span><p> Ответ: Рекурсивный алгоритм можно написать в итерационном виде. При рекурсии программа вызывает сама себя, а при итерации мы повторяем действия многократно.</p><br>
+<span><b>3)</b>Для чего нужны модификаторы доступа public, private и protected в объектно-
+ориентированном программировании? Опишите действие каждого модификатора.</span><p> Ответ: <b>public</b>: публичный, общедоступный класс или член класса, <b>private</b>: закрытый класс или член класса, <b>protected</b>: такой класс или член класса доступен из любого места в текущем классе или пакете или в производных классах, даже если они находятся в других пакетах</p><br>
+<span><b>4)</b>Установите соответствие между операциями и сложностью их выполнения.</span><p> Ответ: 1-В;2-Г;3-Б;4-Д;5-Д;6-Б;7-А</p><br>
+  </body>
+</html>
